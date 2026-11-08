@@ -1,0 +1,50 @@
+.campo {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    padding: 24px 16px 8px;
+    border: 1.5px solid #d4d4d8;
+    border-radius: 12px;
+    outline: none;
+    background-color: #fff;
+    color: #18181b;
+    font: inherit;
+    font-size: 1rem;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* Si ya escribió algo y no es válido, borde rojo */
+.input:not(:placeholder-shown):invalid {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+}
+
+.etiqueta {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    color: #71717a;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transform-origin: left center;
+    transition: transform 200ms ease, color 200ms ease, top 200ms ease;
+}
+
+.input:focus + .etiqueta,
+.input:not(:placeholder-shown) + .etiqueta {
+    top: 16px;
+    color: #6366f1;
+    transform: translateY(-50%) scale(0.78);
+}
+
+.input:not(:placeholder-shown):invalid + .etiqueta {
+    color: #ef4444;
+}

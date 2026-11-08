@@ -1,0 +1,87 @@
+.card {
+    --x: 50%;
+    --y: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 340px;
+    padding: 28px;
+    overflow: hidden;
+    border: 1px solid #262626;
+    border-radius: 20px;
+    background-color: #0a0a0a;
+    color: #e5e5e5;
+    isolation: isolate;
+}
+
+/* Luz suave que sigue al cursor */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(380px circle at var(--x) var(--y), rgba(56, 189, 248, 0.16), transparent 45%);
+    opacity: 0;
+    transition: opacity 400ms ease;
+}
+
+/* Borde que se enciende cerca del cursor: un degradado recortado a 1px con mask */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(240px circle at var(--x) var(--y), #38bdf8, transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 400ms ease;
+}
+
+.card:hover::before,
+.card:hover::after {
+    opacity: 1;
+}
+
+.icono {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background-color: #171717;
+    color: #38bdf8;
+    font-size: 1.2rem;
+}
+
+.card h3 {
+    margin-top: 8px;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.texto {
+    color: #a3a3a3;
+    line-height: 1.5;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+    padding: 0;
+    font-size: 0.9rem;
+    list-style: none;
+}
+
+.lista li::before {
+    content: '→';
+    margin-right: 10px;
+    color: #38bdf8;
+}

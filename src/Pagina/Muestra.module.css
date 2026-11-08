@@ -1,0 +1,89 @@
+.muestra {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+    border: 1px solid var(--linea);
+    border-radius: 22px;
+    background-color: var(--superficie);
+    transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.muestra:hover {
+    border-color: var(--linea-fuerte);
+    box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.35);
+}
+
+.ancha {
+    grid-column: span 2;
+}
+
+.completa {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+    .ancha {
+        grid-column: auto;
+    }
+}
+
+.escenario {
+    display: grid;
+    flex: 1;
+    place-items: center;
+    gap: 16px;
+    min-height: 240px;
+    padding: 32px 24px;
+    border-radius: 21px 21px 0 0;
+    background-color: var(--escenario);
+    background-image: radial-gradient(var(--puntos) 1px, transparent 1px);
+    background-size: 18px 18px;
+}
+
+/* Para cards y componentes que deben ocupar todo el ancho del marco */
+.llenar {
+    place-items: stretch;
+    align-content: center;
+}
+
+.oscura {
+    --puntos: #27272a;
+    background-color: #0c0c0e;
+}
+
+.pie {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 14px 18px;
+    border-top: 1px solid var(--linea);
+}
+
+.textos {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.textos strong {
+    font-size: 0.95rem;
+}
+
+.textos span {
+    color: var(--texto-suave);
+    font-size: 0.82rem;
+}
+
+.ruta {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background-color: var(--codigo);
+    color: var(--texto-suave);
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    overflow-wrap: anywhere;
+}

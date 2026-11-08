@@ -1,0 +1,93 @@
+.tooltip {
+    position: relative;
+    display: inline-flex;
+}
+
+.globo {
+    --mover-x: 0px;
+    --mover-y: 0px;
+    position: absolute;
+    z-index: 10;
+    padding: 7px 11px;
+    border-radius: 8px;
+    background-color: #18181b;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(var(--x), var(--y)) translate(var(--mover-x), var(--mover-y)) scale(0.9);
+    transition: opacity 150ms ease, transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Flechita */
+.globo::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: inherit;
+    transform: rotate(45deg);
+}
+
+.tooltip:hover .globo,
+.tooltip:focus-within .globo {
+    --mover-x: 0px;
+    --mover-y: 0px;
+    opacity: 1;
+    transform: translate(var(--x), var(--y)) scale(1);
+}
+
+.arriba .globo {
+    --x: -50%;
+    --y: 0px;
+    --mover-y: 6px;
+    bottom: calc(100% + 10px);
+    left: 50%;
+}
+
+.arriba .globo::after {
+    bottom: -4px;
+    left: calc(50% - 4px);
+}
+
+.abajo .globo {
+    --x: -50%;
+    --y: 0px;
+    --mover-y: -6px;
+    top: calc(100% + 10px);
+    left: 50%;
+}
+
+.abajo .globo::after {
+    top: -4px;
+    left: calc(50% - 4px);
+}
+
+.izquierda .globo {
+    --x: 0px;
+    --y: -50%;
+    --mover-x: 6px;
+    top: 50%;
+    right: calc(100% + 10px);
+}
+
+.izquierda .globo::after {
+    top: calc(50% - 4px);
+    right: -4px;
+}
+
+.derecha .globo {
+    --x: 0px;
+    --y: -50%;
+    --mover-x: -6px;
+    top: 50%;
+    left: calc(100% + 10px);
+}
+
+.derecha .globo::after {
+    top: calc(50% - 4px);
+    left: -4px;
+}

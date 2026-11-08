@@ -1,0 +1,47 @@
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    /* Desvanece las orillas */
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.pista {
+    display: flex;
+    width: max-content;
+    padding: 8px 0;
+    animation: desplazar var(--duracion, 25s) linear infinite;
+}
+
+.reversa .pista {
+    animation-direction: reverse;
+}
+
+.marquee:hover .pista {
+    animation-play-state: paused;
+}
+
+/* margin en vez de gap: así la mitad exacta de la pista coincide con el inicio de la copia */
+.item {
+    margin-right: 14px;
+    padding: 12px 22px;
+    border: 1px solid #e4e4e7;
+    border-radius: 999px;
+    background-color: #fff;
+    color: #27272a;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes desplazar {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pista {
+        animation-duration: 120s;
+    }
+}

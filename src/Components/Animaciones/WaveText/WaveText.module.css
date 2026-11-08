@@ -1,0 +1,29 @@
+.ola {
+    display: flex;
+    color: #0ea5e9;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+}
+
+.ola span {
+    display: inline-block;
+    animation: ola 1.6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 70ms);
+}
+
+@keyframes ola {
+    0%, 60%, 100% {
+        color: #0ea5e9;
+        transform: translateY(0);
+    }
+    30% {
+        color: #6366f1;
+        transform: translateY(-14px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ola span {
+        animation: none;
+    }
+}

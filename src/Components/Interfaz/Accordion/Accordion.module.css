@@ -1,0 +1,85 @@
+.acordeon {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.item {
+    border: 1px solid #e4e4e7;
+    border-radius: 14px;
+    background-color: #fff;
+    transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.activo {
+    border-color: #c7d2fe;
+    box-shadow: 0 10px 24px -16px rgba(79, 70, 229, 0.6);
+}
+
+.cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 18px;
+    border: none;
+    background: none;
+    color: #18181b;
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Un + hecho con dos barras; al abrir, la vertical se aplana y queda un − */
+.icono {
+    position: relative;
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+}
+
+.icono::before,
+.icono::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    margin-top: -1px;
+    border-radius: 2px;
+    background-color: #6366f1;
+    transition: transform 350ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.icono::after {
+    transform: rotate(90deg);
+}
+
+.activo .icono::after {
+    transform: rotate(0deg);
+}
+
+/* Truco de grid: pasar de 0fr a 1fr anima la altura sin saber cuánto mide el contenido */
+.cuerpo {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 400ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.activo .cuerpo {
+    grid-template-rows: 1fr;
+}
+
+.interior {
+    overflow: hidden;
+}
+
+.interior p {
+    padding: 0 18px 16px;
+    color: #52525b;
+    line-height: 1.55;
+}

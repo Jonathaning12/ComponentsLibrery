@@ -1,0 +1,98 @@
+.loader {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+}
+
+/* Spinner: anillo con un tramo de color */
+.spinner {
+    border: 4px solid color-mix(in srgb, var(--color) 20%, transparent);
+    border-top-color: var(--color);
+    border-radius: 50%;
+    animation: girar 800ms linear infinite;
+}
+
+/* Puntos que rebotan uno tras otro */
+.puntos span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color);
+    animation: rebote 900ms ease-in-out infinite;
+    animation-delay: calc(var(--i) * 150ms);
+}
+
+/* Barras que suben y bajan como ecualizador */
+.barras span {
+    width: 6px;
+    height: 100%;
+    border-radius: 3px;
+    background-color: var(--color);
+    animation: ecualizador 1s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 120ms);
+}
+
+/* Pulso: un punto con ondas que salen */
+.pulso::before,
+.pulso::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: var(--color);
+    animation: pulso 1.6s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.pulso::after {
+    animation-delay: 800ms;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rebote {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-12px);
+        opacity: 1;
+    }
+}
+
+@keyframes ecualizador {
+    0%, 100% {
+        transform: scaleY(0.3);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes pulso {
+    from {
+        opacity: 0.7;
+        transform: scale(0.2);
+    }
+    to {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader,
+    .loader span,
+    .loader::before,
+    .loader::after {
+        animation-duration: 2.5s;
+    }
+}

@@ -1,0 +1,64 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 450px;
+    padding: 18px;
+    border-radius: 18px;
+    background-color: #fff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    font-family: system-ui, sans-serif;
+}
+
+/* Marco horizontal donde va la foto */
+.cardImage{
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 14px;
+    container-type: size; /* permite usar cqw / cqh con las medidas de este marco */
+}
+
+/* La foto viene acostada: se gira -90° para que el coche quede con las ruedas abajo.
+   Al girarla, su ancho y alto se intercambian, por eso el ancho es la altura del marco (cqh)
+   y la altura es el ancho del marco (cqw). */
+.cardImage img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100cqh;
+    height: 100cqw;
+    object-fit: cover;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transition: scale 500ms ease;
+}
+
+.card:hover .cardImage img{
+    scale: 1.05;
+}
+
+.nombre{
+    margin-top: 6px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.precio{
+    color: #555;
+}
+
+.boton{
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background-color: #1f2937;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+}
+
+.boton:hover{
+    background-color: #111827;
+}

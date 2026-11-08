@@ -1,0 +1,23 @@
+.texto {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    /* El último color repite el primero para que el ciclo no tenga salto */
+    background: linear-gradient(90deg, #6366f1, #ec4899, #f59e0b, #10b981, #6366f1);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: desplazar 8s linear infinite;
+}
+
+@keyframes desplazar {
+    to {
+        background-position: 300% 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .texto {
+        animation: none;
+    }
+}

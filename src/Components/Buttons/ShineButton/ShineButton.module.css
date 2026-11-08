@@ -1,0 +1,47 @@
+.boton {
+    position: relative;
+    overflow: hidden;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 12px;
+    background-color: #18181b;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: transform 150ms ease;
+}
+
+.boton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: skewX(-20deg);
+}
+
+.boton:hover::after,
+.boton:focus-visible::after {
+    animation: barrido 800ms ease;
+}
+
+@keyframes barrido {
+    to {
+        left: 130%;
+    }
+}
+
+.boton:active {
+    transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .boton:hover::after,
+    .boton:focus-visible::after {
+        animation: none;
+    }
+}

@@ -1,0 +1,120 @@
+.slider {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.45);
+}
+
+.pista {
+    display: flex;
+    height: 100%;
+    transition: transform 700ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.slide {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 36px 40px 56px;
+    color: #fff;
+}
+
+/* El texto de la diapositiva activa entra desde abajo */
+.slide h3,
+.slide p {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 500ms ease, transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.slide h3 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.slide p {
+    opacity: 0;
+    font-size: 1.05rem;
+}
+
+.activa h3 {
+    opacity: 1;
+    transform: none;
+    transition-delay: 300ms;
+}
+
+.activa p {
+    opacity: 0.85;
+    transform: none;
+    transition-delay: 420ms;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transform: translateY(-50%);
+    transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.flecha:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.flecha:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.izquierda {
+    left: 16px;
+}
+
+.derecha {
+    right: 16px;
+}
+
+.puntos {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    display: flex;
+    gap: 8px;
+}
+
+.puntos button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: width 400ms cubic-bezier(0.65, 0, 0.35, 1), background-color 300ms ease;
+}
+
+.puntos .puntoActivo {
+    width: 28px;
+    background-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pista,
+    .slide h3,
+    .slide p {
+        transition: none;
+    }
+}

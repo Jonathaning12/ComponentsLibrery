@@ -1,0 +1,117 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 340px;
+    padding-bottom: 22px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #18181b;
+    text-align: center;
+    /* Sombra en capas: se ve más natural que una sola sombra grande */
+    box-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.04),
+        0 2px 4px rgba(0, 0, 0, 0.04),
+        0 8px 16px rgba(0, 0, 0, 0.05),
+        0 16px 32px rgba(0, 0, 0, 0.06);
+    transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 350ms ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.04),
+        0 4px 8px rgba(0, 0, 0, 0.05),
+        0 16px 32px rgba(0, 0, 0, 0.08),
+        0 32px 64px rgba(0, 0, 0, 0.1);
+}
+
+.portada {
+    align-self: stretch;
+    height: 92px;
+    background: linear-gradient(120deg, #34d399, #3b82f6, #a855f7);
+    background-size: 200% 100%;
+    transition: background-position 800ms ease;
+}
+
+.card:hover .portada {
+    background-position: 100% 0;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    margin-top: -42px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    background-color: #18181b;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .avatar {
+    transform: scale(1.08) rotate(-6deg);
+}
+
+.nombre {
+    margin-top: 10px;
+    font-size: 1.25rem;
+}
+
+.rol {
+    color: #71717a;
+    font-size: 0.9rem;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-self: stretch;
+    margin: auto 0 16px;
+    padding: 0 16px;
+}
+
+.stats div {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.stats dt {
+    color: #a1a1aa;
+    font-size: 0.75rem;
+}
+
+.stats dd {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.boton {
+    width: calc(100% - 44px);
+    padding: 12px;
+    border: 1px solid #18181b;
+    border-radius: 12px;
+    background-color: #18181b;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 250ms ease, color 250ms ease, transform 150ms ease;
+}
+
+.boton:active {
+    transform: scale(0.97);
+}
+
+.activo {
+    border-color: #d4d4d8;
+    background-color: #fff;
+    color: #18181b;
+}
